@@ -7,8 +7,7 @@ This Repository will show you how to personalise your terminal design by configu
 ### Prerequisity: install HomeBrew, iTerm2, zsh, Nerd Fonts, Powerlevel9k, Ruby, artii-gem, lolcat-gem, neofetch
 
 - Before conituning with this tutorial pls make sure to install [HomeBrew](https://brew.sh/).
-- After installing HomeBrew run this command ```brew install ruby``` in the terminal. For the "motd" setup we need 2 different ruby gems.
-- Now run the ```setup.sh``` file. This bash file should help you installing everything needed for the upcoming steps.
+- Now run the ```setup.sh``` file. This shell file installs/sets up (iTerm2, zsh, Nerd Fonts, Powerlevel9k, Ruby, artii-gem, lolcat-gem, neofetch) everything needed for the upcoming steps.
 
 ### After setup.sh installation
 
@@ -27,27 +26,13 @@ Next setup iTerm2 to use the font by going to:
 
 Select the font Droid Sans Mono Nerd Font Complete and adjust the size if your want too. Also check the box for ```Use a different font for non-ASCII``` text and select the font again. It should be displaying the new font and icons in the prompt.
 
-## Customise your prompt
+## Customisation of prompt and welcome screen
 
-Now navigate to ```$ ~/.zshrc``` and copy-paste the configuration which I already made (inside ```.zshrc```) from the repository.
+By running the shell script (```setup.sh```) the needed steps are already done. You should have a ```~/.zshrc```, ```~/.zlogin``` and a ```/etc/motd.sh``` file. Those files are already filled with the needed configurations. You can always modify it on your personal interests.
 
-## Customise Welcome-Screen
+- ```/etc/motd.sh``` is the shell-script for the welcome screen. Basically you can modify what text should appear and add some extra configuration if interested.
+- ```~/.zshrc``` is a file with the Powerlevel9k and NerdFonts configuration for z-shell and iTerm2.
 
-Open ```$ /etc/motd.sh``` and copy this line of code:
-```
-#!/bin/bash
-artii "Welcome" | lolcat
-neofetch
-```
-
-Now go to ```$ ~/.zlogin``` and copy-paste this line of code: (If this file doesn't exist already create it immediately!)
-```
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-/etc/motd.sh
-```
-
-
-# Resut
+# Result
 This should be the result after completing all steps:
 ![Result](https://github.com/lucaArchidiacono/TerminalStyler/blob/master/result.png)
