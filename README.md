@@ -36,4 +36,4 @@ Just a short description for what those files are needed:
 
 # Result
 This should be the result after completing all steps:
-![Result](https://github.com/lucaArchidiacono/TerminalStyler/blob/master/result.png)
+![Result](https://github.com/lucaArchidiacono/TerminalStyler/blob/master/resultato.png)
