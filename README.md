@@ -28,8 +28,9 @@ Select the font Droid Sans Mono Nerd Font Complete and adjust the size if your w
 
 ## Customisation of prompt and welcome screen
 
-By running the shell script (```setup.sh```) the needed steps are already done. You should have a ```~/.zshrc```, ```~/.zlogin``` and a ```/etc/motd.sh``` file. Those files are already filled with the needed configurations. You can always modify it on your personal interests.
+Because we already ran the shell script (```setup.sh```), no further action is required. You should have a fully configured ```~/.zshrc```, ```~/.zlogin``` and a ```/etc/motd.sh``` file.
 
+Just a short description for what those files are needed:
 - ```/etc/motd.sh``` is the shell-script for the welcome screen. Basically you can modify what text should appear and add some extra configuration if interested.
 - ```~/.zshrc``` is a file with the Powerlevel9k and NerdFonts configuration for z-shell and iTerm2.
 
