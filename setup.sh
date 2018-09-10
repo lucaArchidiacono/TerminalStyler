@@ -74,6 +74,48 @@ echo "Completed installing Powerlevel9k"
 
 echo ""
 
+echo '------------------------------------------------------------------------'
+echo '=> Installation of NeoFetch  '
+echo '------------------------------------------------------------------------'
+
+brew install neofetch
+
+echo "Completed installing NeoFetch"
+
+echo ""
+
+echo '------------------------------------------------------------------------'
+echo '=> Installation of Artii  '
+echo '------------------------------------------------------------------------'
+
+gem install artii
+
+echo "Completed installing Artii"
+
+echo ""
+
+echo '------------------------------------------------------------------------'
+echo '=> Installation of LolCat  '
+echo '------------------------------------------------------------------------'
+
+gem install lolcat
+
+echo "Completed installing LolCat"
+
+echo ""
+
+echo '------------------------------------------------------------------------'
+echo '=> Setup motd.sh '
+echo '------------------------------------------------------------------------'
+
+sudo touch /etc/motd.sh
+
+sudo chmod a+rwx /etc/motd.sh
+
+echo "Completed setup of motd.sh"
+
+echo ""
+
 echo "Everything should be downloaded and installed. Pls continue with the next steps which are described in the README file"
 
 open /Applications/iTerm.app
