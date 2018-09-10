@@ -46,3 +46,8 @@ Now go to ```$ ~/.zlogin``` and copy-paste this line of code: (If this file does
 
 /etc/motd.sh
 ```
+
+
+# Resut
+This should be the result after completing all steps:
+![Result](https://github.com/lucaArchidiacono/TerminalStyler/blob/master/result.png)
