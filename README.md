@@ -24,7 +24,7 @@ Next setup iTerm2 to use the font by going to:
 
 ```iTerm2 -> Preferences -> Profiles -> Text -> Font -> Change Font```
 
-Select the font Droid Sans Mono Nerd Font Complete and adjust the size if your want too. Also check the box for ```Use a different font for non-ASCII``` text and select the font again. It should be displaying the new font and icons in the prompt.
+Select the font ```Droid Sans Mono Nerd Font Complete``` and adjust the size if you want too. Also check the box for ```Use a different font for non-ASCII``` text and select the font again. It should be displaying the new font and icons in the prompt.
 
 ## Customisation of prompt and welcome screen
 
