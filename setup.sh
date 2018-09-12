@@ -1,12 +1,12 @@
 #!/bin/bash
 
 cat << "EOF"
-___________                  .__              .__    _________ __          .__                
-\__    ___/__________  _____ |__| ____ _____  |  |  /   _____//  |_ ___.__.|  |   ___________ 
+___________                  .__              .__    _________ __          .__
+\__    ___/__________  _____ |__| ____ _____  |  |  /   _____//  |_ ___.__.|  |   ___________
   |    |_/ __ \_  __ \/     \|  |/    \\__  \ |  |  \_____  \\   __<   |  ||  | _/ __ \_  __ \
   |    |\  ___/|  | \/  Y Y  \  |   |  \/ __ \|  |__/        \|  |  \___  ||  |_\  ___/|  | \/
-  |____| \___  >__|  |__|_|  /__|___|  (____  /____/_______  /|__|  / ____||____/\___  >__|   
-             \/            \/        \/     \/             \/       \/               \/       
+  |____| \___  >__|  |__|_|  /__|___|  (____  /____/_______  /|__|  / ____||____/\___  >__|
+             \/            \/        \/     \/             \/       \/               \/
 EOF
 
 echo '------------------------------------------------------------------------'
@@ -266,7 +266,12 @@ echo '------------------------------------------------------------------------'
 
 cd ~
 open /Applications/iTerm.app
-sleep 30s
+while [ ! -f ~/Library/Preferences/com.googlecode.iterm2.plist ]
+do
+  sleep 2
+done
+osascript -e 'quit app "iTerm"'
+
 /usr/libexec/PlistBuddy -c "Add ':Custom Color Presets:Dracula' dict" ~/Library/Preferences/com.googlecode.iterm2.plist
 cd ~/Downloads/iTermColorScheme/iTerm2-Color-Schemes-master/schemes
 /usr/libexec/PlistBuddy -c "Merge 'Dracula.itermcolors' ':Custom Color Presets:Dracula'" ~/Library/Preferences/com.googlecode.iterm2.plist
