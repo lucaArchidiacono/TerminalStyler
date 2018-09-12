@@ -77,7 +77,11 @@ echo '------------------------------------------------------------------------'
 
 cd ~
 
-git clone https://github.com/bhilburn/powerlevel9k.git ~/powerlevel9k
+if [ ! -d ~/powerlevel9k ]; then
+    git clone https://github.com/bhilburn/powerlevel9k.git ~/powerlevel9k
+  else
+    echo "Powerlevel9k already exists"
+fi
 
 cat <<EOF >~/.zshrc
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -126,6 +130,8 @@ source ~/powerlevel9k/powerlevel9k.zsh-theme
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 EOF
+
+#todo exportPATH übernimmt die values der environment variablen und setzt sie GOOD? or BAD?
 
 echo "Completed implementing default properties in zshrc-file"
 
@@ -250,6 +256,8 @@ echo '=> Setup iTerm2 '
 echo '------------------------------------------------------------------------'
 
 cd ~
+open /Applications/iTerm.app
+sleep 30s
 /usr/libexec/PlistBuddy -c "Add ':Custom Color Presets:Dracula' dict" ~/Library/Preferences/com.googlecode.iterm2.plist
 cd ~/Downloads/iTermColorScheme/iTerm2-Color-Schemes-master/schemes
 /usr/libexec/PlistBuddy -c "Merge 'Dracula.itermcolors' ':Custom Color Presets:Dracula'" ~/Library/Preferences/com.googlecode.iterm2.plist
@@ -306,4 +314,3 @@ echo "***    Everything should be downloaded and installed. Pls continue with th
 echo "***                                                                                                                              ***"
 echo "************************************************************************************************************************************"
 echo "************************************************************************************************************************************"
-open /Applications/iTerm.app
