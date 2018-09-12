@@ -196,6 +196,46 @@ echo "Completed setup .zlogin"
 
 echo ""
 
-echo "Everything should be downloaded and installed. Pls continue with the next steps which are described in the README file"
+echo '------------------------------------------------------------------------'
+echo '=> Download color schemes for iTerm2 '
+echo '------------------------------------------------------------------------'
 
+cd ~/Downloads && curl -fLo "mbadolato-iTerm2-Color-Schemes-3502a88.zip" https://github.com/mbadolato/iTerm2-Color-Schemes/archive/master.zip
+
+echo "Completed downloading color schemes for iTerm2"
+
+echo ""
+
+echo '------------------------------------------------------------------------'
+echo '=> Setup iTerm2 '
+echo '------------------------------------------------------------------------'
+
+/usr/libexec/PlistBuddy -c "Add ':Custom Color Presets:Dracula' dict" ~/Library/Preferences/com.googlecode.iterm2.plist
+/usr/libexec/PlistBuddy -c "Merge 'Dracula.itermcolors' ':Custom Color Presets:Dracula'" ~/Library/Preferences/com.googlecode.iterm2.plist
+/usr/libexec/PlistBuddy -c "Copy ':New Bookmarks:0' ':New Bookmarks:1'" ~/Library/Preferences/com.googlecode.iterm2.plist
+/usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Name' 'Dracula'" ~/Library/Preferences/com.googlecode.iterm2.plist
+/usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Non Ascii Font' 'DroidSansMonoNerdFontComplete- 12'" ~/Library/Preferences/com.googlecode.iterm2.plist
+/usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Normal Font' 'DroidSansMonoNerdFontComplete- 12'" ~/Library/Preferences/com.googlecode.iterm2.plist
+
+echo "Completed setup iTerm2"
+
+echo ""
+
+cat << "EOF"
+._._._. _________                                     __        .__          __  .__                       ._._._.
+| | | | \_   ___ \  ____   ____    ________________ _/  |_ __ __|  | _____ _/  |_|__| ____   ____   ______ | | | |
+| | | | /    \  \/ /  _ \ /    \  / ___\_  __ \__  \\   __\  |  \  | \__  \\   __\  |/  _ \ /    \ /  ___/ | | | |
+ \|\|\| \     \___(  <_> )   |  \/ /_/  >  | \// __ \|  | |  |  /  |__/ __ \|  | |  (  <_> )   |  \\___ \   \|\|\|
+ ______  \______  /\____/|___|  /\___  /|__|  (____  /__| |____/|____(____  /__| |__|\____/|___|  /____  >  ______
+ \/\/\/         \/            \//_____/            \/                     \/                    \/     \/   \/\/\/
+EOF
+
+
+echo "************************************************************************************************************************************"
+echo "************************************************************************************************************************************"
+echo "***                                                                                                                              ***"
+echo "***    Everything should be downloaded and installed. Pls continue with the next steps which are described in the README file    ***"
+echo "***                                                                                                                              ***"
+echo "************************************************************************************************************************************"
+echo "************************************************************************************************************************************"
 open /Applications/iTerm.app
