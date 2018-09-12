@@ -11,20 +11,24 @@ This Repository will show you how to personalise your terminal design by configu
 
 ### After setup.sh installation
 
-If everything went fine, you should see running iTerm2.
-For the next steps we try to select a color scheme which fits your needs and setup the fonts which we downloaded using the ```setup.sh``` file.
+If everything went fine, you should see iTerm2 running.
+
+## Download color schemes for iTerm2
+
+Already done by ```setup.sh``` :white_check_mark:
+
+- There are many iTerm2 color schemes out there. One source is [iterm2colorschemes](https://iterm2colorschemes.com/), which gives you about 175 choices. The ```setup.sh``` file should already have downloaded you the .zip with the ```Dracula``` color scheme.
 
 ## Configure iTerm2 with Color Schemes
 
-There are many iTerm color schemes out there. One source is [iterm2colorschemes](https://iterm2colorschemes.com/), which gives you about 175 choices. Once you have downloaded them, select ```iTerm -> Preferences -> Profiles -> Colors -> Color Presets -> Import``` then select the colour scheme you like.
+As ```setup.sh``` already donwloaded the ```Dracula``` color schemes, we want to add it into your new iTerm2 profile called ```TerminalStyler```.
+For this reason select ```iTerm -> Preferences -> Profiles -> TerminalStyler -> Color Presets -> Dracula```. You should instantly see how the color of your iTerm2 console changes.
+
+If you want to import a new color scheme to your profile ```TerminalStyler```, select ```iTerm -> Preferences -> Profiles -> Dracula -> Color Presets -> Import```.
 
 ## Configure iTerm2 with Nerd Fonts
 
-Next setup iTerm2 to use the font by going to:
-
-```iTerm2 -> Preferences -> Profiles -> Text -> Font -> Change Font```
-
-Select the font ```Droid Sans Mono Nerd Font Complete``` and adjust the size if you want too. Also check the box for ```Use a different font for non-ASCII``` text and select the font again. It should be displaying the new font and icons in the prompt.
+Already done by ```setup.sh``` :white_check_mark:
 
 ## Customisation of prompt and welcome screen
 
