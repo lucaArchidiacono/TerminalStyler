@@ -210,6 +210,8 @@ echo '------------------------------------------------------------------------'
 echo '=> Setup iTerm2 '
 echo '------------------------------------------------------------------------'
 
+cd ~
+
 /usr/libexec/PlistBuddy -c "Add ':Custom Color Presets:Dracula' dict" ~/Library/Preferences/com.googlecode.iterm2.plist
 /usr/libexec/PlistBuddy -c "Merge 'Dracula.itermcolors' ':Custom Color Presets:Dracula'" ~/Library/Preferences/com.googlecode.iterm2.plist
 /usr/libexec/PlistBuddy -c "Copy ':New Bookmarks:0' ':New Bookmarks:1'" ~/Library/Preferences/com.googlecode.iterm2.plist
