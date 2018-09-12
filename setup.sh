@@ -14,9 +14,12 @@ echo '------------------------------------------------------------------------'
 echo '=> Installation of Ruby with HomeBrew'
 echo '------------------------------------------------------------------------'
 
-brew install ruby
-
-echo "Completed Ruby installation"
+if command -v ruby >/dev/null 2>&1; then
+    echo "Ruby already exists"
+else
+    brew install ruby
+    echo "Completed Ruby installation"
+fi
 
 echo ""
 
@@ -34,9 +37,12 @@ echo '------------------------------------------------------------------------'
 echo '=> Installation of Zsh-shell with HomeBrew '
 echo '------------------------------------------------------------------------'
 
-brew install zsh
-
-echo "Completed zsh-shell installation"
+if command -v zsh >/dev/null 2>&1; then
+    echo "zsh-shell already exists"
+else
+    brew install zsh
+    echo "Completed zsh-shell installation"
+fi
 
 echo ""
 
@@ -54,9 +60,14 @@ echo '------------------------------------------------------------------------'
 echo '=> Download Nerd Fonts with curl '
 echo '------------------------------------------------------------------------'
 
-cd ~/Library/Fonts && curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
+cd ~/Library/Fonts
 
-echo "Completed Nerd Fonts installation"
+if [ ! -f Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete.otf ]; then
+    curl -fLo "Droid Sans Mono for Powerline Nerd Font Complete.otf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/complete/Droid%20Sans%20Mono%20Nerd%20Font%20Complete.otf
+    echo "Completed Nerd Fonts installation"
+  else
+    echo "Font is already downloaded"
+fi
 
 echo ""
 
@@ -124,9 +135,12 @@ echo '------------------------------------------------------------------------'
 echo '=> Installation of NeoFetch  '
 echo '------------------------------------------------------------------------'
 
-brew install neofetch
-
-echo "Completed installing NeoFetch"
+if command -v neofetch >/dev/null 2>&1; then
+    echo "NeoFetch already exists"
+else
+    brew install neofetch
+    echo "Completed installing NeoFetch"
+fi
 
 echo ""
 
@@ -134,9 +148,12 @@ echo '------------------------------------------------------------------------'
 echo '=> Installation of Artii  '
 echo '------------------------------------------------------------------------'
 
-gem install artii
-
-echo "Completed installing Artii"
+if command -v artii >/dev/null 2>&1; then
+    echo "Artii already exists"
+else
+    gem install artii
+    echo "Completed installing Artii"
+fi
 
 echo ""
 
@@ -144,27 +161,34 @@ echo '------------------------------------------------------------------------'
 echo '=> Installation of LolCat  '
 echo '------------------------------------------------------------------------'
 
-gem install lolcat
-
-echo "Completed installing LolCat"
+if command -v artii >/dev/null 2>&1; then
+    echo "LolCat already exists"
+else
+    gem install lolcat
+    echo "Completed installing LolCat"
+fi
 
 echo ""
 
-echo '------------------------------------------------------------------------'
-echo '=> Setup motd.sh '
-echo '------------------------------------------------------------------------'
-
-sudo touch /etc/motd.sh
-
-sudo chmod a+rwx /etc/motd.sh
+if [ ! -f /etc/motd.sh ]; then
+    echo '------------------------------------------------------------------------'
+    echo '=> Create motd.sh '
+    echo '------------------------------------------------------------------------'
+    sudo touch /etc/motd.sh
+    sudo chmod a+rwx /etc/motd.sh
+  else
+    echo '------------------------------------------------------------------------'
+    echo '=> Modify motd.sh '
+    echo '------------------------------------------------------------------------'
+fi
 
 cat <<EOF >/etc/motd.sh
-#!/bin/bash
-artii "Welcome" | lolcat
-neofetch
+        #!/bin/bash
+        artii "Welcome" | lolcat
+        neofetch
 EOF
 
-echo "Completed setup of motd.sh"
+echo "Completed setup motd.sh"
 
 echo ""
 
@@ -197,10 +221,25 @@ echo "Completed setup .zlogin"
 echo ""
 
 echo '------------------------------------------------------------------------'
+echo '=> Installation of Unzip'
+echo '------------------------------------------------------------------------'
+
+if command -v unzip >/dev/null 2>&1; then
+    echo "Unzip already exists"
+else
+    sudo apt-get install unzip
+    echo "Completed unzip installation"
+fi
+
+echo ""
+
+echo '------------------------------------------------------------------------'
 echo '=> Download color schemes for iTerm2 '
 echo '------------------------------------------------------------------------'
 
 cd ~/Downloads && curl -fLo "mbadolato-iTerm2-Color-Schemes-3502a88.zip" https://github.com/mbadolato/iTerm2-Color-Schemes/archive/master.zip
+
+mkdir iTermColorScheme && unzip mbadolato-iTerm2-Color-Schemes-3502a88.zip -d iTermColorScheme
 
 echo "Completed downloading color schemes for iTerm2"
 
@@ -211,19 +250,47 @@ echo '=> Setup iTerm2 '
 echo '------------------------------------------------------------------------'
 
 cd ~
-
 /usr/libexec/PlistBuddy -c "Add ':Custom Color Presets:Dracula' dict" ~/Library/Preferences/com.googlecode.iterm2.plist
+cd ~/Downloads/iTermColorScheme/iTerm2-Color-Schemes-master/schemes
 /usr/libexec/PlistBuddy -c "Merge 'Dracula.itermcolors' ':Custom Color Presets:Dracula'" ~/Library/Preferences/com.googlecode.iterm2.plist
+cd ~
 /usr/libexec/PlistBuddy -c "Copy ':New Bookmarks:0' ':New Bookmarks:1'" ~/Library/Preferences/com.googlecode.iterm2.plist
-/usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Name' 'Dracula'" ~/Library/Preferences/com.googlecode.iterm2.plist
+/usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Name' 'TerminalStyler'" ~/Library/Preferences/com.googlecode.iterm2.plist
 /usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Non Ascii Font' 'DroidSansMonoNerdFontComplete- 12'" ~/Library/Preferences/com.googlecode.iterm2.plist
 /usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Normal Font' 'DroidSansMonoNerdFontComplete- 12'" ~/Library/Preferences/com.googlecode.iterm2.plist
+/usr/libexec/PlistBuddy -c "Delete ':Default Bookmark Guid'" ~/Library/Preferences/com.googlecode.iterm2.plist
+/usr/libexec/PlistBuddy -c "Copy ':New Bookmarks:1:Guid' ':Default Bookmark Guid'" ~/Library/Preferences/com.googlecode.iterm2.plist
 
 echo "Completed setup iTerm2"
 
 echo ""
 
 cat << "EOF"
+          _ _,---._
+       ,-','       `-.___
+      /-;'               `._
+     /\/          ._   _,'o \
+    ( /\       _,--'\,','"`. )
+     |\      ,'o     \'    //\
+     |      \        /   ,--'""`-.
+     :       \_    _/ ,-'         `-._
+      \        `--'  /                )
+       `.  \`._    ,'     ________,','
+         .--`     ,'  ,--` __\___,;'
+          \`.,-- ,' ,`_)--'  /`.,'
+           \( ;  | | )      (`-/
+             `--'| |)       |-/
+               | | |        | |
+               | | |,.,-.   | |_
+               | `./ /   )---`  )
+              _|  /    ,',   ,-'
+             ,'|_(    /-<._,' |--,
+             |    `--'---.     \/ \
+             |          / \    /\  \
+           ,-^---._     |  \  /  \  \
+        ,-'        \----'   \/    \--`.
+       /            \              \   \
+
 ._._._. _________                                     __        .__          __  .__                       ._._._.
 | | | | \_   ___ \  ____   ____    ________________ _/  |_ __ __|  | _____ _/  |_|__| ____   ____   ______ | | | |
 | | | | /    \  \/ /  _ \ /    \  / ___\_  __ \__  \\   __\  |  \  | \__  \\   __\  |/  _ \ /    \ /  ___/ | | | |
@@ -231,7 +298,6 @@ cat << "EOF"
  ______  \______  /\____/|___|  /\___  /|__|  (____  /__| |____/|____(____  /__| |__|\____/|___|  /____  >  ______
  \/\/\/         \/            \//_____/            \/                     \/                    \/     \/   \/\/\/
 EOF
-
 
 echo "************************************************************************************************************************************"
 echo "************************************************************************************************************************************"
